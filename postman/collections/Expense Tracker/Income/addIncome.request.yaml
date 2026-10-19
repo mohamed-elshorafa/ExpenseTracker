@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{localhost}}/api/v1/income/add"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |+
+    {
+        "icon": "",
+        "source": "Salary",
+        "amount": "1400",
+        "date": "{{$isoTimestamp}}"
+    }
+
+order: 1790709243109

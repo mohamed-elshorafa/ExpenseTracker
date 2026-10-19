@@ -1,0 +1,26 @@
+$kind: collection
+variables:
+  - key: localhost
+    value: ""
+    disabled: false
+  - key: accessToken
+    value: ""
+    disabled: false
+  - key: json_web_token_0c48
+    secret: true
+    disabled: false
+  - key: json_web_token_0lz6
+    secret: true
+    disabled: false
+  - key: json_web_token_0sde
+    secret: true
+    disabled: false
+  - key: json_web_token_0ca9
+    secret: true
+    disabled: false
+auth:
+  - id: 3a225422-0463-4f7a-857c-7c4f0edc8d35
+    type: bearer
+    name: Bearer Token
+    credentials:
+      token: "{{json_web_token_0ca9}}"

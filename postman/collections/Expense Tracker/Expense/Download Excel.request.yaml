@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{localhost}}/api/v1/income/downloadexcel"
+method: GET
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "fullName": "Mohamed Elshorafa",
+        "email": "mohamed@gmail.com",
+        "password": "test@123",
+        "profileImageUrl": ""
+    }
+order: 4039819786367534

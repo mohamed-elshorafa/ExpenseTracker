@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{localhost}}/api/v1/income/6abd39365b59c51a1af357a9"
+method: DELETE
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "fullName": "Mohamed Elshorafa",
+        "email": "mohamed@gmail.com",
+        "password": "test@123",
+        "profileImageUrl": ""
+    }
+order: 3556741887517988
