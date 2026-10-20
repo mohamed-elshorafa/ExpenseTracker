@@ -107,3 +107,45 @@ exports.updateThemePreference = async (req, res) => {
         return res.status(500).json({ message: "Error updating theme preference" });
     }
 };
+
+// Update the user's profile details
+exports.updateUserProfile = async (req, res) => {
+    const body = req.body || {};
+    const { fullName, profileImageUrl } = body;
+    const hasProfileImageUrl = Object.hasOwn(body, "profileImageUrl");
+
+    if (typeof fullName !== "string" || !fullName.trim()) {
+        return res.status(400).json({ message: "Name is required" });
+    }
+
+    if (
+        hasProfileImageUrl &&
+        profileImageUrl !== null &&
+        typeof profileImageUrl !== "string"
+    ) {
+        return res.status(400).json({ message: "Profile image URL must be a string or null" });
+    }
+
+    const updates = { fullName: fullName.trim() };
+    if (hasProfileImageUrl) {
+        updates.profileImageUrl = profileImageUrl;
+    }
+
+    try {
+        const user = await User.findByIdAndUpdate(
+            req.user.id,
+            updates,
+            { new: true, runValidators: true }
+        ).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        return res.status(200).json(user);
+    } catch (err) {
+        return res
+            .status(500)
+            .json({ message: "Error updating user profile", error: err.message });
+    }
+};
